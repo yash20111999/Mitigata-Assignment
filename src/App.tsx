@@ -1,7 +1,13 @@
-export default function App() {
+import './App.css'
+import { Dashboard } from './pages/Dashboard'
+
+function App() {
+
   return (
-    <h1 className="text-3xl font-bold text-blue-600">
-      Dashboard
-    </h1>
-  );
+    <>
+      <Dashboard />
+    </>
+  )
 }
+
+export default App
