@@ -6,7 +6,14 @@ export const CategoryFilter: React.FC = () => {
     const categories = useProductStore((state) => state.filters.categories);
     const setFilter = useProductStore((state) => state.setFilter);
     
-    const allCategories = [...new Set(products.map(p => p.category))];
+    const allCategories = [
+      ...new Set(
+        products
+          .map(p => p.category)
+          .filter((category): category is string => Boolean(category && category.trim()))
+      ),
+    ];
+
 
     return (
         <div className="mb-4">

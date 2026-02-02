@@ -6,7 +6,14 @@ export const BrandFilter: React.FC = () => {
     const brands = useProductStore((state) => state.filters.brands);
     const setFilter = useProductStore((state) => state.setFilter);
 
-    const allBrands = [...new Set(products.map(p => p.brand))];
+    const allBrands = [
+      ...new Set(
+        products
+          .map(p => p.brand)
+          .filter((brand): brand is string => Boolean(brand && brand.trim()))
+      ),
+    ];
+
 
     return (
         <div className="mb-4">
