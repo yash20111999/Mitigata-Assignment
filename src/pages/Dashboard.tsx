@@ -58,28 +58,26 @@ export const Dashboard: React.FC = () => {
   }, []);
 
   return (
-    <div className="h-screen overflow-y-hidden bg-[var(--bg-app)] text-[var(--text-primary)]">
-      <div className="grid h-full grid-cols-1 lg:grid-cols-[280px_1fr]">
+    <div className="h-screen flex flex-col bg-[var(--bg-app)] text-[var(--text-primary)]">
+      <Header 
+          onToggleFilterPanel={toggleFilterPanel} 
+          viewMode={viewMode}
+          setViewMode={setViewMode}
+          onOpenCompareDrawer={handleOpenCompareDrawer}
+      />
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-[280px_1fr] overflow-y-auto">
         <FilterPanel isOpen={isFilterPanelOpen} onClose={toggleFilterPanel} />
-        <div className="flex h-full flex-col">
-          <Header 
-              onToggleFilterPanel={toggleFilterPanel} 
+        <main>
+          <div className="mx-auto max-w-7xl p-4 lg:p-6">
+            {error && <p className="text-red-500">{error}</p>}
+            <ProductGrid 
+              products={sortedProducts} 
+              loading={loading} 
               viewMode={viewMode}
-              setViewMode={setViewMode}
-              onOpenCompareDrawer={handleOpenCompareDrawer}
-          />
-          <main className="flex-1 overflow-y-auto">
-            <div className="mx-auto max-w-7xl p-4 lg:p-6">
-              {error && <p className="text-red-500">{error}</p>}
-              <ProductGrid 
-                products={sortedProducts} 
-                loading={loading} 
-                viewMode={viewMode}
-                onProductSelect={handleProductSelect}
-              />
-            </div>
-          </main>
-        </div>
+              onProductSelect={handleProductSelect}
+            />
+          </div>
+        </main>
       </div>
       <ProductDetailModal product={selectedProduct} onClose={handleCloseDetailModal} />
       <ComparisonDrawer isOpen={isCompareDrawerOpen} onClose={handleCloseCompareDrawer} />

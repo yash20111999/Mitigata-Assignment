@@ -16,7 +16,7 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({ isOpen, onClose }) => 
     
   return (
     <aside
-      className={`fixed inset-y-0 left-0 z-30 w-72 transform border-r border-[var(--border-default)] bg-[var(--bg-surface)] p-4 transition-transform duration-300 ease-in-out lg:static lg:z-auto lg:translate-x-0 ${
+      className={`fixed inset-y-0 left-0 z-30 w-72 transform border-r border-[var(--border-default)] bg-[var(--bg-surface)] p-4 transition-transform duration-300 ease-in-out lg:sticky lg:top-0 lg:z-auto lg:self-start lg:translate-x-0 ${
         isOpen ? 'translate-x-0' : '-translate-x-full'
       }`}
     >
