@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import type { RefObject } from 'react';
 
 export function useIntersectionObserver<T extends Element>(
-  ref: RefObject<T>,
+  ref: RefObject<T | null>,
   options?: IntersectionObserverInit
 ): IntersectionObserverEntry | null {
+
   const [entry, setEntry] = useState<IntersectionObserverEntry | null>(null);
 
   const root = options?.root ?? null;
