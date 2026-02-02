@@ -43,7 +43,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ products, loading, vie
                 <button 
                     key={page} 
                     onClick={() => setCurrentPage(page)}
-                    className={`mx-1 px-3 py-1 rounded font-medium ${currentPage === page ? 'bg-[var(--accent-primary)] text-white' : 'bg-[var(--bg-surface)] text-[var(--text-primary)] hover:bg-[var(--bg-muted)]'}`}
+                    className={`mx-1 rounded-md px-3 py-1 font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)] ${currentPage === page ? 'bg-[var(--accent-primary)] text-white' : 'bg-[var(--bg-surface)] text-[var(--text-primary)] hover:bg-[var(--bg-muted)]'}`}
                 >
                     {page}
                 </button>

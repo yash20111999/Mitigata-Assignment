@@ -28,7 +28,7 @@ export const SortDropdown: React.FC = () => {
         <select
             value={sort}
             onChange={(e) => setSort(e.target.value as SortOption)}
-            className="h-10 rounded-md border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-primary)] focus:border-[var(--accent-primary)] focus:ring-0"
+            className="h-10 cursor-pointer rounded-md border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-primary)] focus:ring-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)]"
         >
             {sortOptions.map(option => (
                 <option key={option.value} value={option.value}>{option.label}</option>

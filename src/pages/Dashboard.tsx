@@ -65,9 +65,9 @@ export const Dashboard: React.FC = () => {
           setViewMode={setViewMode}
           onOpenCompareDrawer={handleOpenCompareDrawer}
       />
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-[280px_1fr] overflow-y-auto">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-[280px_1fr] overflow-hidden">
         <FilterPanel isOpen={isFilterPanelOpen} onClose={toggleFilterPanel} />
-        <main>
+        <main className="overflow-y-auto">
           <div className="mx-auto max-w-7xl p-4 lg:p-6">
             {error && <p className="text-red-500">{error}</p>}
             <ProductGrid 

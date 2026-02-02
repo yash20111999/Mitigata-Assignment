@@ -24,7 +24,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
   return (
     <ModalBase isOpen={!!product} onClose={onClose} ariaLabel="Product Details">
       <div className="p-4 sm:p-6">
-        <button onClick={onClose} className="absolute top-4 right-4 text-2xl text-[var(--text-muted)]">&times;</button>
+        <button onClick={onClose} className="absolute top-2 right-2 rounded-md p-2 text-2xl text-[var(--text-muted)] transition-colors hover:bg-[var(--bg-muted)] hover:text-[var(--text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)]">&times;</button>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <img src={product.images[0]} alt={product.title} className="w-full h-auto aspect-square object-cover rounded-lg" />
           <div className="flex flex-col">
@@ -37,10 +37,10 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
             </div>
             <p className="text-[var(--text-secondary)] mt-4 flex-grow">{product.description}</p>
             <div className="flex gap-2 mt-4">
-              <button onClick={() => toggleFavorite(product.id)} className="w-full rounded-md py-2 font-semibold bg-[var(--bg-muted)] text-[var(--text-secondary)] hover:bg-[var(--border-default)]">
+              <button onClick={() => toggleFavorite(product.id)} className="w-full rounded-md py-2 font-semibold bg-[var(--bg-muted)] text-[var(--text-secondary)] transition-colors hover:bg-[var(--border-default)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)]">
                 {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
               </button>
-              <button onClick={() => toggleCompare(product.id)}  className="w-full rounded-md py-2 font-semibold bg-[var(--bg-muted)] text-[var(--text-secondary)] hover:bg-[var(--border-default)]">
+              <button onClick={() => toggleCompare(product.id)}  className="w-full rounded-md py-2 font-semibold bg-[var(--bg-muted)] text-[var(--text-secondary)] transition-colors hover:bg-[var(--border-default)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)]">
                 {isCompared ? 'Remove from Compare' : 'Add to Compare'}
               </button>
             </div>

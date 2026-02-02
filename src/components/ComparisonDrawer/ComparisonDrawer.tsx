@@ -82,7 +82,7 @@ export const ComparisonDrawer: React.FC<ComparisonDrawerProps> = ({ isOpen, onCl
       >
         <div className="flex items-center justify-between border-b border-[var(--border-default)] p-4">
           <h2 className="text-xl font-semibold text-[var(--text-primary)]">Compare Products</h2>
-          <button onClick={onClose} className="text-2xl text-[var(--text-muted)] hover:text-[var(--text-primary)]">&times;</button>
+          <button onClick={onClose} className="rounded-md p-1 text-2xl text-[var(--text-muted)] transition-colors hover:bg-[var(--bg-muted)] hover:text-[var(--text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)]">&times;</button>
         </div>
         <div className="flex-1 overflow-y-auto p-4">
           {comparedProducts.length < 2 ? (
@@ -99,7 +99,7 @@ export const ComparisonDrawer: React.FC<ComparisonDrawerProps> = ({ isOpen, onCl
                     <p className="text-sm text-[var(--text-secondary)]">Stock: {product.stock}</p>
                     <p className="font-bold text-[var(--text-primary)] mt-1">${product.price}</p>
                   </div>
-                  <button onClick={() => toggleCompare(product.id)} className="text-sm text-[var(--accent-primary)] hover:underline self-start">
+                  <button onClick={() => toggleCompare(product.id)} className="rounded-md px-2 py-1 text-sm text-[var(--accent-primary)] transition-colors hover:bg-[var(--accent-primary-soft)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)] self-start">
                     Remove
                   </button>
                 </div>

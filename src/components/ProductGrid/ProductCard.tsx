@@ -37,7 +37,7 @@ const ProductCardComponent: React.FC<ProductCardProps> = ({ product, viewMode, o
     
     if (viewMode === 'list') {
         return (
-            <div ref={cardRef} onClick={() => onProductSelect(product)} className="flex flex-col sm:flex-row gap-4 bg-[var(--bg-surface)] p-4 rounded-lg border border-[var(--border-default)] transition-shadow hover:shadow-md cursor-pointer">
+            <div ref={cardRef} onClick={() => onProductSelect(product)} className="flex flex-col sm:flex-row gap-4 bg-[var(--bg-surface)] p-4 rounded-lg border border-transparent transition-shadow duration-200 hover:shadow-md cursor-pointer">
                 <div className="w-full sm:w-32 h-32 aspect-square shrink-0">
                   {isVisible ? (
                     <img loading="lazy" src={product.thumbnail} alt={product.title} className="w-full h-full object-cover rounded-md"/>
@@ -54,10 +54,10 @@ const ProductCardComponent: React.FC<ProductCardProps> = ({ product, viewMode, o
                     </div>
                     <p className="text-xl font-semibold text-[var(--text-primary)] mt-2">${product.price}</p>
                 </div>
-                <div className="flex flex-col justify-start items-start sm:items-end gap-2 shrink-0">
-                    <button onClick={handleFavoriteClick} className="text-2xl">{isFavorite ? '❤️' : '🤍'}</button>
-                    <label onClick={(e) => e.stopPropagation()} className="flex items-center gap-2 cursor-pointer">
-                      <input type="checkbox" checked={isCompared} onChange={handleCompareClick} className="h-4 w-4 rounded border-[var(--border-default)] text-[var(--accent-primary)] focus:ring-[var(--accent-primary)]" />
+                <div className="flex flex-row sm:flex-col justify-start items-center sm:items-end gap-2 shrink-0">
+                    <button onClick={handleFavoriteClick} className="text-2xl rounded-full p-1 transition-transform hover:scale-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)]">{isFavorite ? '❤️' : '🤍'}</button>
+                    <label onClick={(e) => e.stopPropagation()} className="flex items-center gap-2 cursor-pointer rounded-md p-1 transition-colors hover:bg-[var(--bg-muted)]">
+                      <input type="checkbox" checked={isCompared} onChange={handleCompareClick} className="h-4 w-4 rounded border-[var(--border-default)] text-[var(--accent-primary)] focus:ring-0 focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-surface)]" />
                       <span className="text-[var(--text-secondary)]">Compare</span>
                     </label>
                 </div>
@@ -66,7 +66,7 @@ const ProductCardComponent: React.FC<ProductCardProps> = ({ product, viewMode, o
     }
 
     return (
-        <div ref={cardRef} onClick={() => onProductSelect(product)} className="bg-[var(--bg-surface)] p-4 rounded-lg border border-[var(--border-default)] flex flex-col transition-shadow hover:shadow-md cursor-pointer">
+        <div ref={cardRef} onClick={() => onProductSelect(product)} className="bg-[var(--bg-surface)] p-4 rounded-lg border border-transparent flex flex-col transition-shadow duration-200 hover:shadow-md cursor-pointer">
             <div className="w-full aspect-square mb-4">
               {isVisible ? (
                 <img loading="lazy" src={product.thumbnail} alt={product.title} className="w-full h-full object-cover rounded-md"/>
@@ -83,11 +83,11 @@ const ProductCardComponent: React.FC<ProductCardProps> = ({ product, viewMode, o
               <span className={`mt-2 inline-block px-2 py-1 text-xs font-semibold rounded-full ${stockBadgeStyle}`}>{stockStatus}</span>
             </div>
             <div className='flex justify-between items-center pt-4 mt-auto'>
-                <label onClick={(e) => e.stopPropagation()} className="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" checked={isCompared} onChange={handleCompareClick} className="h-4 w-4 rounded border-[var(--border-default)] text-[var(--accent-primary)] focus:ring-[var(--accent-primary)]" />
+                <label onClick={(e) => e.stopPropagation()} className="flex items-center gap-2 cursor-pointer rounded-md p-1 transition-colors hover:bg-[var(--bg-muted)]">
+                  <input type="checkbox" checked={isCompared} onChange={handleCompareClick} className="h-4 w-4 rounded border-[var(--border-default)] text-[var(--accent-primary)] focus:ring-0 focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-surface)]" />
                   <span className="text-[var(--text-secondary)]">Compare</span>
                 </label>
-                <button onClick={handleFavoriteClick} className="text-2xl">{isFavorite ? '❤️' : '🤍'}</button>
+                <button onClick={handleFavoriteClick} className="text-2xl rounded-full p-1 transition-transform hover:scale-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)]">{isFavorite ? '❤️' : '🤍'}</button>
             </div>
         </div>
     );
