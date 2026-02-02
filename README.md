@@ -1,73 +1,143 @@
-# React + TypeScript + Vite
+# 🛒 Product Listing Dashboard (React + Zustand)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive product listing dashboard built with **React 18**, **TypeScript**, **Zustand**, and **Tailwind CSS v4**.  
+The application demonstrates clean architecture, scalable state management, and real-world UX patterns aligned with the assignment requirements.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## React Compiler
+### Core Functionality
+- Product listing with **Grid / List** views
+- **Search** with debounce
+- **Sorting** (price, rating, title)
+- **Pagination**
+- Fully **responsive** layout (mobile, tablet, desktop)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Filters
+- Category (checkbox-based)
+- Brand (checkbox-based)
+- Price range
+- Rating
+- Stock status
+- Clear all filters
 
-## Expanding the ESLint configuration
+> Category and Brand filters show the **top N most frequent options**, derived dynamically from product data to improve usability and avoid clutter.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Advanced UX
+- **Sticky filter sidebar** on desktop
+- **Slide-in filter panel** on mobile
+- Fixed filter header and footer with **conditional inner scrolling**
+- **Skeleton loaders** during data fetch
+- **Lazy-loaded images** using `IntersectionObserver`
+- **Product detail modal**
+- **Comparison drawer** (up to 3 products)
+- Favorites support
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Accessibility & Polish
+- Keyboard navigation (ESC to close modals/drawers)
+- Focus-visible styles for interactive elements
+- Subtle hover and focus effects for all CTAs
+- No layout shift or double-scroll issues
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🧱 Architecture
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The project follows a **modular, feature-based component structure** to ensure scalability and maintainability.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+components/
+├── Header/
+│   ├── Header.tsx
+│   ├── SearchBar.tsx
+│   ├── ViewToggle.tsx
+│   └── CompareButton.tsx
+├── FilterPanel/
+│   ├── FilterPanel.tsx
+│   ├── CategoryFilter.tsx
+│   ├── BrandFilter.tsx
+│   ├── PriceRangeFilter.tsx
+│   ├── RatingFilter.tsx
+│   └── StockFilter.tsx
+├── ProductGrid/
+│   ├── ProductGrid.tsx
+│   ├── ProductCard.tsx
+│   └── ResultsHeader.tsx
+├── ProductModal/
+│   └── ProductModal.tsx
+└── ComparisonDrawer/
+    └── ComparisonDrawer.tsx
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Key Architectural Decisions
+- **Zustand** is used for global state (products, filters, favorites, compare list)
+- UI state (drawer open/close, view mode) is kept **local**, not in the store
+- Components are split by **single responsibility**
+- Derived data (filters, top brands/categories) is computed using `useMemo`
+- No routing is used, as per assignment scope
+
+---
+
+## 🎨 Styling
+
+- **Tailwind CSS v4**
+- Design tokens implemented using **CSS variables**
+- No hardcoded colors
+- Consistent spacing, typography, and interaction states
+
+---
+
+## ⚙️ Tech Stack
+
+- **React 18**
+- **TypeScript**
+- **Zustand**
+- **Tailwind CSS v4**
+- Vite
+- DummyJSON API (for product data)
+
+---
+
+## 🚀 Getting Started
+
+Install dependencies:
+
+npm install
+
+Run development server:
+
+npm run dev
+
+The app will be available at http://localhost:5173.
+
+---
+
+## 🧠 Notable UX Decisions
+
+- **Top brands/categories only**: Improves scanability and avoids overwhelming users.
+- **Comparison as a drawer** instead of a modal: Better usability and continuity.
+- **Conditional scrolling** in filter panel: Scroll appears only when content overflows.
+- **Checkbox-based filters**: Matches assignment documentation and common e-commerce patterns.
+
+---
+
+## ✅ Assignment Alignment
+
+- Matches all functional requirements
+- Follows documented UI expectations
+- Clean, scalable architecture
+- Production-grade UX and accessibility considerations
+
+---
+
+## 📌 Possible Enhancements (Out of Scope)
+
+- Dark mode
+- Persisted filters/favorites
+- Server-side pagination
+- Routing for product detail pages
+
+---
+
+## 👤 Author
+
+Yash Maheshwari
