@@ -15,13 +15,13 @@ export const SearchBar: React.FC = () => {
     }, [debouncedSearch, search, setFilter]);
 
     return (
-        <div className="relative">
+        <div className="relative flex-1 max-w-md">
             <input
                 type="text"
                 placeholder="Search products..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="h-10 w-full rounded-md border border-[var(--border-default)] bg-[var(--bg-app)] pl-4 pr-10 text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-[var(--accent-primary)] focus:ring-0 sm:w-64"
+                className="h-10 w-full rounded-md border border-[var(--border-default)] bg-[var(--bg-app)] pl-4 pr-10 text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-[var(--accent-primary)] focus:ring-0"
             />
         </div>
     );

@@ -17,7 +17,7 @@ export const Header: React.FC<HeaderProps> = ({ onToggleFilterPanel, viewMode, s
 
     return (
         <header className="sticky top-0 z-20 flex h-16 shrink-0 items-center justify-between border-b border-[var(--border-default)] bg-[var(--bg-surface)] px-4 lg:px-6">
-            <div className="flex items-center gap-4">
+            <div className="flex flex-1 items-center gap-2 min-w-0 md:gap-4">
                 {isTabletOrMobile && (
                     <button onClick={onToggleFilterPanel} className="lg:hidden rounded-md p-1 text-[var(--text-muted)] transition-transform hover:scale-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)]">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
