@@ -8,4 +8,8 @@ export interface FilterState {
   stockStatus: StockStatus[];
   brands: string[];
   favoritesOnly?: boolean;
+  reviewDateRange?: {
+    start: string | null;
+    end: string | null;
+  };
 }

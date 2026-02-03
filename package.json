@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/react-date-range": "^1.4.10",
     "clsx": "^2.1.1",
     "react": "^19.2.0",
+    "react-date-range": "^2.0.1",
     "react-dom": "^19.2.0",
     "zustand": "^5.0.11"
   },

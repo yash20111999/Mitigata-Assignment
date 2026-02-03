@@ -14,12 +14,45 @@ const checkStockStatus = (stock: number, selectedStatuses: StockStatus[]): boole
 };
 
 export const filterProducts = (products: Product[], filters: FilterState, favorites: number[]): Product[] => {
-  const { search, categories, priceRange, minRating, stockStatus, brands, favoritesOnly } = filters;
+  const { search, categories, priceRange, minRating, stockStatus, brands, favoritesOnly, reviewDateRange } = filters;
   const lowerCaseSearch = search.toLowerCase();
+
+  const startDate = reviewDateRange?.start ? new Date(reviewDateRange.start).getTime() : null;
+  const endDate = reviewDateRange?.end ? new Date(reviewDateRange.end).getTime() : null;
+
 
   return products.filter((product) => {
     if (favoritesOnly && !favorites.includes(product.id)) {
         return false;
+    }
+    
+    if (reviewDateRange && (startDate || endDate)) {
+      if (!product.reviews || product.reviews.length === 0) {
+        return false;
+      }
+
+      const hasReviewInDateRange = product.reviews.some((review) => {
+        try {
+          const reviewDate = new Date(review.date).getTime();
+          if (startDate && endDate) {
+            return reviewDate >= startDate && reviewDate <= endDate;
+          }
+          if (startDate) {
+            return reviewDate >= startDate;
+          }
+          if (endDate) {
+            return reviewDate <= endDate;
+          }
+        } catch (error) {
+            console.error(`Invalid date format for review:`, { review, error });
+            return false;
+        }
+        return false;
+      });
+
+      if (!hasReviewInDateRange) {
+        return false;
+      }
     }
 
     if (

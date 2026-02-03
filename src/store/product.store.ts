@@ -34,6 +34,10 @@ const initialFilterState: FilterState = {
   stockStatus: [],
   brands: [],
   favoritesOnly: false,
+  reviewDateRange: {
+    start: null,
+    end: null,
+  },
 };
 
 export const useProductStore = create<ProductState & ProductActions>((set, get) => ({

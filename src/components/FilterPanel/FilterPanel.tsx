@@ -6,6 +6,7 @@ import { RatingFilter } from './RatingFilter';
 import { StockFilter } from './StockFilter';
 import { BrandFilter } from './BrandFilter';
 import { FavoritesFilter } from './FavoritesFilter';
+import { ReviewDateFilter } from './ReviewDateFilter';
 
 interface FilterPanelProps {
   isOpen: boolean;
@@ -35,6 +36,7 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({ isOpen, onClose }) => 
           <RatingFilter />
           <StockFilter />
           <BrandFilter />
+          <ReviewDateFilter />
       </div>
       
       <div className="mt-auto flex-shrink-0 border-t border-[var(--border-default)] p-4">
