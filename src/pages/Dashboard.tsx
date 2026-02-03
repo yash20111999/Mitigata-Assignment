@@ -20,14 +20,15 @@ export const Dashboard: React.FC = () => {
   const error = useProductStore((state) => state.error);
   const filters = useProductStore((state) => state.filters);
   const sort = useProductStore((state) => state.sort);
+  const favorites = useProductStore((state) => state.favorites);
 
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isCompareDrawerOpen, setCompareDrawerOpen] = useState(false);
   const [isFilterPanelOpen, setFilterPanelOpen] = useState(false);
 
   const filteredProducts = useMemo(
-    () => filterProducts(products, filters),
-    [products, filters]
+    () => filterProducts(products, filters, favorites),
+    [products, filters, favorites]
   );
 
   const sortedProducts = useMemo(

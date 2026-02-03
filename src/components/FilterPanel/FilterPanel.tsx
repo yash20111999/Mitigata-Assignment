@@ -5,6 +5,7 @@ import { PriceRangeFilter } from './PriceRangeFilter';
 import { RatingFilter } from './RatingFilter';
 import { StockFilter } from './StockFilter';
 import { BrandFilter } from './BrandFilter';
+import { FavoritesFilter } from './FavoritesFilter';
 
 interface FilterPanelProps {
   isOpen: boolean;
@@ -28,6 +29,7 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({ isOpen, onClose }) => 
       </div>
       
       <div className="flex-1 overflow-y-auto px-4">
+          <FavoritesFilter />
           <CategoryFilter />
           <PriceRangeFilter />
           <RatingFilter />

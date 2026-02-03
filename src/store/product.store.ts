@@ -33,6 +33,7 @@ const initialFilterState: FilterState = {
   minRating: 0,
   stockStatus: [],
   brands: [],
+  favoritesOnly: false,
 };
 
 export const useProductStore = create<ProductState & ProductActions>((set, get) => ({

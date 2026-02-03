@@ -7,4 +7,5 @@ export interface FilterState {
   minRating: number;
   stockStatus: StockStatus[];
   brands: string[];
+  favoritesOnly?: boolean;
 }

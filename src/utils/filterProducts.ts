@@ -13,11 +13,15 @@ const checkStockStatus = (stock: number, selectedStatuses: StockStatus[]): boole
   });
 };
 
-export const filterProducts = (products: Product[], filters: FilterState): Product[] => {
-  const { search, categories, priceRange, minRating, stockStatus, brands } = filters;
-  const lowerCaseSearch = search.trim().toLowerCase();
+export const filterProducts = (products: Product[], filters: FilterState, favorites: number[]): Product[] => {
+  const { search, categories, priceRange, minRating, stockStatus, brands, favoritesOnly } = filters;
+  const lowerCaseSearch = search.toLowerCase();
 
   return products.filter((product) => {
+    if (favoritesOnly && !favorites.includes(product.id)) {
+        return false;
+    }
+
     if (
       lowerCaseSearch &&
       !product.title.toLowerCase().includes(lowerCaseSearch) &&
